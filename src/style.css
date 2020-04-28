@@ -95,7 +95,9 @@ h3 {
 }
 
 .card-icon {
+  position: absolute;
   padding: 8px;
+  z-index: 1;
 }
 
 .card-icon:hover {
