@@ -7,7 +7,7 @@ const App = () => {
   const [sortBy, setSortBy] = useState("Lastname");
   const [contacts, setContacts] = useState([]);
 
-  const sortArray = (sortBy) => {
+  const sortContacts = (sortBy) => {
     const sortedContacts = (contacts) =>
       [...contacts].sort((a, b) => {
         const sortKey = sortBy === "Firstname" ? "first" : "last";
@@ -71,7 +71,7 @@ const App = () => {
               onChange={(e) => {
                 const value = e.target.value;
                 setSortBy(() => {
-                  sortArray(value);
+                  sortContacts(value);
                   return value;
                 });
               }}
@@ -101,8 +101,18 @@ const App = () => {
                   return contact;
                 }
               })
-              .map((contact, index) => (
-                <Card key={index} contact={contact} position={index} />
+              .map((contact) => (
+                <Card
+                  key={contact.id.value}
+                  contact={contact}
+                  handleSubmit={(newContact) => {
+                    const newContacts = contacts
+                      .filter((c) => c.id.value !== newContact.id.value)
+                      .concat([newContact]);
+                    setContacts(newContacts);
+                    sortContacts(sortBy);
+                  }}
+                />
               ))}
           </div>
         </main>
