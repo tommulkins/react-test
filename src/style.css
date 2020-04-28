@@ -184,8 +184,28 @@ h3 {
   text-align: center;
 }
 
+#modal form {
+  font-size: 20px;
+}
+
+#modal input {
+  width: 80%;
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  height: 2rem;
+  font-size: 1rem;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+#modal input:focus {
+  background-color: yellow;
+  font-weight: bold;
+}
+
 #modal .buttons button {
   display: inline-block;
+  margin-top: 1rem;
   margin-right: 15px;
 }
 
