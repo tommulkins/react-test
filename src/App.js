@@ -6,6 +6,7 @@ const App = () => {
   const [search, setSearch] = useState("");
   const [sortBy, setSortBy] = useState("Lastname");
   const [contacts, setContacts] = useState([]);
+
   const sortArray = (sortBy) => {
     const sortedContacts = (contacts) =>
       [...contacts].sort((a, b) => {
@@ -93,7 +94,7 @@ const App = () => {
                 );
                 if (
                   search.trim() &&
-                  ~fullName.toUpperCase().indexOf(search.toUpperCase())
+                  ~fullName.toUpperCase().indexOf(search.trim().toUpperCase())
                 ) {
                   return contact;
                 } else if (!search.trim()) {
