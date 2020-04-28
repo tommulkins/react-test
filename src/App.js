@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { render } from "react-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
+import Card from "./Card";
 
 const App = () => {
+  const [search, setSearch] = useState("");
+  const [sortBy, setSortBy] = useState("Lastname");
+  const [contacts, setContacts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchContacts = () => {
+    fetch("https://randomuser.me/api")
+      .then((response) => response.json())
+      .then((data) => {
+        setContacts(data);
+      });
+  };
+
   return (
     <div className="content">
       <div className="content-inside">
@@ -34,35 +46,7 @@ const App = () => {
         <hr />
 
         <main>
-          <div className="card">
-            <div className="card-header">
-              <FontAwesomeIcon
-                icon={faUserEdit}
-                size="lg"
-                className="card-icon"
-              />
-              <div className="card-name">Contact Name</div>
-            </div>
-
-            <img
-              src="https://media-exp1.licdn.com/dms/image/C5603AQEsP0RffvxWKA/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=KUpFO5kY1Jb8CwxR_qAFJ9xOod08xsGFgxs8Z2vXybw"
-              height="130"
-              width="130"
-              alt="Profile"
-              className="card-image"
-            />
-
-            <div className="card-body">
-              <div className="card-details">
-                Email
-                <br />
-                Phone
-                <br />
-                Location
-                <br />
-              </div>
-            </div>
-          </div>
+          <div className="cards">{<Card />}</div>
         </main>
       </div>
 
