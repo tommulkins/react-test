@@ -2,16 +2,23 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserEdit } from "@fortawesome/free-solid-svg-icons";
 
-const Card = () => {
+const Card = ({ position, contact }) => {
+  const firstName = contact.name.first;
+  const lastName = contact.name.last;
+  const picture = contact.picture.large || "https://via.placeholder.com/150";
+  const email = contact.email;
+  const phone = contact.phone;
+  const location = `${contact.location.city}, ${contact.location.state}`;
+
   return (
     <div className="card">
       <div className="card-header">
         <FontAwesomeIcon icon={faUserEdit} size="lg" className="card-icon" />
-        <div className="card-name">Contact Name</div>
+        <div className="card-name">{`${firstName} ${lastName}`}</div>
       </div>
 
       <img
-        src="https://media-exp1.licdn.com/dms/image/C5603AQEsP0RffvxWKA/profile-displayphoto-shrink_200_200/0?e=1593648000&v=beta&t=KUpFO5kY1Jb8CwxR_qAFJ9xOod08xsGFgxs8Z2vXybw"
+        src={picture}
         height="130"
         width="130"
         alt="Profile"
@@ -20,11 +27,11 @@ const Card = () => {
 
       <div className="card-body">
         <div className="card-details">
-          Email
+          {email}
           <br />
-          Phone
+          {phone}
           <br />
-          Location
+          {location}
           <br />
         </div>
       </div>
