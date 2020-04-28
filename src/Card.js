@@ -12,9 +12,7 @@ const Card = ({ position, contact }) => {
   };
 
   useEffect(() => {
-    setNewContact(() => {
-      return { ...contact };
-    });
+    setNewContact(() => contact);
   }, [contact]);
 
   return (
