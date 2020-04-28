@@ -11,7 +11,7 @@ const App = () => {
           <h1>Mad Mobile Contact Manager</h1>
         </header>
 
-        <form className="search-form">
+        <form className="search-form" onSubmit={(e) => e.preventDefault()}>
           <label htmlFor="search">
             <h2>Search</h2>
             <input
@@ -19,11 +19,12 @@ const App = () => {
               type="text"
               placeholder="Who are you looking for?"
               className="search-bar"
+              autoComplete="off"
             />
           </label>
           <label htmlFor="sort">
             <h2>Sort by</h2>
-            <select id="sort" value="" className="sort-by">
+            <select id="sort" className="sort-by">
               <option>Firstname</option>
               <option>Lastname</option>
             </select>
@@ -35,8 +36,12 @@ const App = () => {
         <main>
           <div className="card">
             <div className="card-header">
-              <FontAwesomeIcon icon={faUserEdit} />
-              <span className="card-name">Contact Name</span>
+              <FontAwesomeIcon
+                icon={faUserEdit}
+                size="lg"
+                className="card-icon"
+              />
+              <div className="card-name">Contact Name</div>
             </div>
 
             <img
@@ -48,9 +53,14 @@ const App = () => {
             />
 
             <div className="card-body">
-              {`Email
-          Phone
-          Location`}
+              <div className="card-details">
+                Email
+                <br />
+                Phone
+                <br />
+                Location
+                <br />
+              </div>
             </div>
           </div>
         </main>
